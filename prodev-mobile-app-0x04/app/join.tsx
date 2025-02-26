@@ -3,7 +3,6 @@ import { styles } from "@/styles/joinstyle";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import React from 'react';
-import { SPACING } from "@/styles/mainstyle";
 import { useNavigation } from '@react-navigation/native';
 
 export default function Join() {
@@ -16,7 +15,7 @@ export default function Join() {
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Ionicons name="arrow-back" size={25} color="black" />
           </TouchableOpacity>
-          <Image source={require('@/assets/images/greenLogo.png')} />
+          <Image source={require('@/assets/images/logo-green.png')} />
         </View>
         <Text style={styles.titleText}>Sign in to your Account</Text>
         <Text style={styles.subText}>

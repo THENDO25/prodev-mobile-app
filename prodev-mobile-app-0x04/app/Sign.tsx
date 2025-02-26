@@ -1,21 +1,26 @@
 import { Text, TextInput, View, TouchableOpacity, Image } from "react-native";
+import { styles } from "@/styles/joinstyle";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import React from 'react';
-import { styles } from '@/styles/joinstyle';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Index() {
+export default function Join() {
+  const navigation = useNavigation();
+
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
         <View style={styles.iconsection}>
-          <Ionicons name="arrow-back" size={25} />
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Ionicons name="arrow-back" size={25} color="black" />
+          </TouchableOpacity>
           <Image source={require('@/assets/images/logo-green.png')} />
         </View>
-        <View style={styles.titleTextGroup}>
-          <Text style={styles.titleText}>Sign in to your Account</Text>
-          <Text style={styles.subText}>Enter your email and password to sign in.</Text>
-        </View>
+        <Text style={styles.titleText}>Sign in to your Account</Text>
+        <Text style={styles.subText}>
+          Enter your email and password to sign in.
+        </Text>
 
         <View style={styles.formGroup}>
           <Text style={styles.formLabel}>Email</Text>
@@ -28,7 +33,7 @@ export default function Index() {
           <Text style={styles.forgotPasswordText}>Forgot password?</Text>
         </View>
 
-        <TouchableOpacity style={styles.primaryButton}>
+        <TouchableOpacity style={styles.primaryButton} onPress={() => navigation.navigate("Sign" as never)}>
           <Text style={styles.buttonText}>Sign in</Text>
         </TouchableOpacity>
 
@@ -56,7 +61,9 @@ export default function Index() {
 
         <View style={styles.signupgroup}>
           <Text style={styles.signupTitleText}>Don't have an account?</Text>
-          <Text style={styles.signupSubTitleText}>Join now</Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Sign" as never)}>
+            <Text style={styles.signupSubTitleText}>Join now</Text>
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
     </SafeAreaProvider>
